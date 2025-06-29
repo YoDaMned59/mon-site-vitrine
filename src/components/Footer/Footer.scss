@@ -1,0 +1,226 @@
+@use '../../styles/variables.scss' as *;
+
+.footer {
+  background: var(--gray-900);
+  color: var(--gray-300);
+  padding: var(--spacing-3xl) 0 var(--spacing-xl);
+
+  &__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+
+  &__brand {
+    .footer__logo {
+      @include flex-center;
+      width: 48px;
+      height: 48px;
+      background: var(--primary-color);
+      border-radius: var(--border-radius-lg);
+      margin-bottom: var(--spacing-md);
+      cursor: pointer;
+
+      span {
+        color: var(--white);
+        font-size: var(--text-xl);
+        font-weight: 800;
+        font-family: var(--font-family-mono);
+      }
+    }
+
+    .footer__description {
+      color: var(--gray-400);
+      line-height: 1.6;
+      font-size: var(--text-base);
+    }
+  }
+
+  &__nav, &__services, &__contact {
+    h4 {
+      color: var(--white);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: var(--spacing-sm);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__nav-list {
+    button {
+      background: none;
+      border: none;
+      color: var(--gray-400);
+      font-size: var(--text-base);
+      cursor: pointer;
+      transition: color var(--transition-fast);
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  &__services-list {
+    span {
+      color: var(--gray-400);
+      font-size: var(--text-base);
+      transition: color var(--transition-fast);
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  &__contact-info {
+    p {
+      margin-bottom: var(--spacing-sm);
+      font-size: var(--text-sm);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        color: var(--white);
+        font-weight: 600;
+        margin-right: var(--spacing-sm);
+      }
+
+      a {
+        color: var(--gray-400);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: var(--gray-700);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  &__bottom {
+    @include flex-between;
+    align-items: center;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: var(--spacing-lg);
+      text-align: center;
+    }
+  }
+
+  &__copyright {
+    p {
+      color: var(--gray-400);
+      font-size: var(--text-sm);
+      @include flex-center;
+      gap: var(--spacing-xs);
+    }
+  }
+
+  &__heart {
+    color: var(--error);
+    animation: pulse 2s infinite;
+  }
+
+  &__social {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  &__social-link {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--gray-800);
+    color: var(--gray-300);
+    border-radius: var(--border-radius-md);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+
+    &:hover {
+      background: var(--primary-color);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1023px) {
+  .footer {
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+
+    &__content {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    &__brand {
+      .footer__logo {
+        width: 40px;
+        height: 40px;
+
+        span {
+          font-size: var(--text-lg);
+        }
+      }
+
+      .footer__description {
+        font-size: var(--text-sm);
+      }
+    }
+
+    &__nav, &__services, &__contact {
+      h4 {
+        font-size: var(--text-base);
+        margin-bottom: var(--spacing-md);
+      }
+    }
+
+    &__nav-list button,
+    &__services-list span {
+      font-size: var(--text-sm);
+    }
+
+    &__contact-info p {
+      font-size: var(--text-xs);
+    }
+  }
+} 

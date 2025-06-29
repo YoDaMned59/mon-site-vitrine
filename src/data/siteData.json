@@ -1,0 +1,75 @@
+{
+  "hero": {
+    "title": "Développeur Freelance",
+    "subtitle": "Solutions Web sur Mesure",
+    "slogan": "Transformez votre vision en succès digital",
+    "description": "Je vous accompagne de l'idée à la mise en ligne de votre projet web. Ensemble, créons une solution qui répond parfaitement à vos objectifs business et à vos utilisateurs.",
+    "cta": "Démarrer votre projet"
+  },
+  "services": [
+    {
+      "id": 1,
+      "title": "Sites Web Professionnels",
+      "description": "Des sites web modernes qui convertissent vos visiteurs en clients. Design attractif, navigation intuitive et optimisé pour tous les appareils.",
+      "icon": "Globe",
+      "features": ["Design sur mesure", "Responsive mobile", "Optimisé SEO", "Interface intuitive"]
+    },
+    {
+      "id": 2,
+      "title": "Applications Web",
+      "description": "Des applications web qui automatisent vos processus et améliorent votre productivité. De la gestion client à la vente en ligne.",
+      "icon": "Zap",
+      "features": ["Automatisation", "Gestion simplifiée", "Sécurité renforcée", "Évolutif"]
+    },
+    {
+      "id": 3,
+      "title": "Maintenance & Évolution",
+      "description": "Un accompagnement continu pour faire évoluer votre solution web selon vos besoins et les nouvelles tendances du marché.",
+      "icon": "Shield",
+      "features": ["Support réactif", "Mises à jour", "Optimisations", "Conseils stratégiques"]
+    }
+  ],
+  "whyChooseMe": {
+    "title": "Pourquoi me faire confiance ?",
+    "subtitle": "Votre partenaire digital de confiance",
+    "reasons": [
+      {
+        "id": 1,
+        "title": "Compréhension Business",
+        "description": "Je prends le temps de comprendre vos enjeux, vos objectifs et votre marché pour proposer des solutions adaptées.",
+        "icon": "Target"
+      },
+      {
+        "id": 2,
+        "title": "Communication Transparente",
+        "description": "Suivi régulier, explications claires et respect des délais. Vous êtes informé à chaque étape de votre projet.",
+        "icon": "MessageCircle"
+      },
+      {
+        "id": 3,
+        "title": "Solutions Sur Mesure",
+        "description": "Pas de solutions toutes faites. Chaque projet est unique et mérite une approche personnalisée.",
+        "icon": "Settings"
+      },
+      {
+        "id": 4,
+        "title": "Accompagnement Long Terme",
+        "description": "Je reste disponible après la livraison pour faire évoluer votre solution selon vos besoins.",
+        "icon": "Users"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Prêt à concrétiser votre projet ?",
+    "subtitle": "Discutons de vos objectifs et trouvons ensemble la meilleure solution pour votre business",
+    "email": "sduviviertech@outlook.fr",
+    "phone": "06 46 14 72 82",
+    "location": "Lille",
+    "cta": "Discuter de mon projet"
+  },
+  "social": {
+    "github": "https://github.com/YoDaMned59",
+    "linkedin": "https://www.linkedin.com/in/duviviersebastien/",
+    "calendly": "https://calendly.com/sduviviertech"
+  }
+} 

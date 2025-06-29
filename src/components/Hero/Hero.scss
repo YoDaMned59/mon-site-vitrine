@@ -1,0 +1,330 @@
+@use '../../styles/variables.scss' as *;
+
+.hero {
+  position: relative;
+  min-height: 60vh;
+  padding-top: 120px;
+  padding-bottom: var(--spacing-md);
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+
+  &__content {
+    @include flex-between;
+    gap: var(--spacing-3xl);
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s, transform 0.6s;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__main {
+    flex: 1;
+    max-width: 600px;
+
+    @media (max-width: 1023px) {
+      max-width: 100%;
+    }
+  }
+
+  &__text {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  &__badge {
+    @include flex-center;
+    gap: var(--spacing-sm);
+    display: inline-flex;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg);
+    width: fit-content;
+
+    @media (max-width: 1023px) {
+      margin: 0 auto var(--spacing-lg);
+    }
+  }
+
+  &__title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+    color: var(--gray-900);
+
+    @media (min-width: 768px) {
+      font-size: var(--text-5xl);
+    }
+
+    @media (min-width: 1024px) {
+      font-size: var(--text-6xl);
+    }
+
+    &-highlight {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__slogan {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.4;
+
+    @media (min-width: 768px) {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  &__description {
+    font-size: var(--text-lg);
+    color: var(--gray-600);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.6;
+  }
+
+  &__actions {
+    @include flex-center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  &__cta {
+    gap: var(--spacing-sm);
+  }
+
+  &__secondary {
+    gap: var(--spacing-sm);
+  }
+
+  &__stats {
+    @include flex-center;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+  }
+
+  &__stat {
+    text-align: center;
+
+    &-number {
+      font-size: var(--text-3xl);
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    &-label {
+      font-size: var(--text-sm);
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+  }
+
+  &__visual {
+    position: relative;
+    flex: 1;
+    max-width: 500px;
+    height: 400px;
+
+    @media (max-width: 1023px) {
+      max-width: 100%;
+      height: 300px;
+    }
+  }
+
+  &__code-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--gray-900);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+
+    @media (max-width: 1023px) {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      margin: 0 auto;
+    }
+  }
+
+  &__code-header {
+    background: var(--gray-800);
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--gray-700);
+  }
+
+  &__code-dots {
+    @include flex-center;
+    gap: var(--spacing-xs);
+
+    span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gray-600);
+
+      &:nth-child(1) {
+        background: #ff5f56;
+      }
+
+      &:nth-child(2) {
+        background: #ffbd2e;
+      }
+
+      &:nth-child(3) {
+        background: #27ca3f;
+      }
+    }
+  }
+
+  &__code-content {
+    padding: var(--spacing-lg);
+
+    pre {
+      margin: 0;
+      font-family: var(--font-family-mono);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: var(--gray-300);
+
+      code {
+        color: inherit;
+      }
+    }
+  }
+
+  &__floating-icon {
+    position: absolute;
+    @include flex-center;
+    width: 60px;
+    height: 60px;
+    background: var(--white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    color: var(--primary-color);
+
+    &--1 {
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    &--2 {
+      top: 20%;
+      right: 10%;
+      animation-delay: 1s;
+    }
+
+    &--3 {
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 2s;
+    }
+
+    @media (max-width: 1023px) {
+      display: none;
+    }
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  &__gradient {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.1;
+
+    &--1 {
+      width: 400px;
+      height: 400px;
+      background: var(--primary-color);
+      top: -100px;
+      right: -100px;
+    }
+
+    &--2 {
+      width: 300px;
+      height: 300px;
+      background: var(--secondary-color);
+      bottom: -50px;
+      left: -50px;
+    }
+
+    &--3 {
+      width: 200px;
+      height: 200px;
+      background: var(--accent-color);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.hero__content.visible .fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-scale {
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+@keyframes floating {
+  0% { transform: translateY(-10px); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(-10px); }
+} 
