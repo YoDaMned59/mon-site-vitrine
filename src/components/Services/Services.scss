@@ -230,4 +230,42 @@
       font-size: var(--text-lg);
     }
   }
+}
+
+// Fallback pour les navigateurs avec problèmes d'IntersectionObserver
+@media (max-width: 480px) {
+  .services {
+    &__header,
+    &__grid,
+    &__cta {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  .service-card,
+  .service-card__feature {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+// Force l'affichage après un délai pour éviter les problèmes d'animation
+.services {
+  &__header,
+  &__grid,
+  &__cta {
+    &.visible {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
+.service-card,
+.service-card__feature {
+  &.visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 } 

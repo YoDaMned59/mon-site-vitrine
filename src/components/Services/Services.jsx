@@ -8,13 +8,45 @@ const Services = () => {
   // Simule l'effet d'apparition avec IntersectionObserver
   const [isInView, setIsInView] = React.useState(false);
   React.useEffect(() => {
+    // Fallback pour les navigateurs qui ne supportent pas IntersectionObserver
+    if (!window.IntersectionObserver) {
+      setIsInView(true);
+      return;
+    }
+
     const observer = new window.IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1, rootMargin: '-100px' }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          // Une fois visible, on peut arrêter d'observer
+          observer.disconnect();
+        }
+      },
+      { 
+        threshold: 0.1, 
+        rootMargin: '-50px',
+        // Amélioration pour mobile
+        root: null
+      }
     );
-    if (ref.current) observer.observe(ref.current);
+    
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    
     return () => observer.disconnect();
   }, []);
+
+  // Fallback : si après 1 seconde la section n'est toujours pas visible, on la force
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isInView) {
+        setIsInView(true);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [isInView]);
 
   const getIconComponent = (iconName) => {
     const IconComponent = LucideIcons[iconName];
@@ -24,6 +56,12 @@ const Services = () => {
   return (
     <section id="services" className="services" ref={ref}>
       <div className="container">
+        {/* Texte d'introduction SEO */}
+        <div className="services__intro" style={{marginBottom: '2rem', color: '#444', fontSize: '1.1rem'}}>
+          <p>
+            Bienvenue sur ma page de services ! En tant que développeur web freelance, je propose une gamme complète de prestations pour accompagner la transformation digitale de votre entreprise. Que vous ayez besoin d'un site vitrine moderne, d'une application web sur mesure ou d'une refonte de votre présence en ligne, je mets mon expertise à votre service pour garantir des solutions performantes, sécurisées et adaptées à vos besoins. Découvrez ci-dessous l'ensemble de mes services, pensés pour booster votre visibilité et atteindre vos objectifs business.
+          </p>
+        </div>
         <div className={`services__header${isInView ? ' visible' : ''}`}>
           <h2 className="services__title">Mes Services</h2>
           <p className="services__subtitle">
