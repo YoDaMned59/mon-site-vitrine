@@ -59,6 +59,68 @@
       }
     ]
   },
+  "portfolio": {
+    "title": "Réalisations",
+    "subtitle": "Quelques projets livrés. D'autres cartes s'ajouteront ici au fil des collaborations.",
+    "projects": [
+      {
+        "id": "limagentete",
+        "type": "Site vitrine",
+        "title": "L'image en tête",
+        "tagline": "Coaching scolaire et accompagnement dans les apprentissages",
+        "excerpt": "Site clair pour rassurer parents et élèves, navigation fluide et prise de contact. Avis Google 5/5 (Mathilde Casiez).",
+        "url": "https://limagentete.fr",
+        "urlLabel": "Voir le site"
+      }
+    ],
+    "comingSoon": [
+      {
+        "id": 1,
+        "title": "Prochains créneaux",
+        "description": "Je limite le nombre de projets en parallèle pour garder un suivi de qualité."
+      },
+      {
+        "id": 2,
+        "title": "Votre projet ici",
+        "description": "Indépendants, artisans, professions libérales : parlons de votre besoin."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "id": 1,
+      "question": "Combien coute un site web ?",
+      "answer": "Chaque projet est different. Je propose des offres a partir de 700 EUR, puis un devis personnalise selon vos objectifs et les fonctionnalites attendues."
+    },
+    {
+      "id": 2,
+      "question": "Quels sont les delais de realisation ?",
+      "answer": "En general, une landing page peut etre livree en 1 a 2 semaines, et un site vitrine complet en 2 a 4 semaines selon le contenu et vos retours."
+    },
+    {
+      "id": 3,
+      "question": "Le site m'appartient-il apres livraison ?",
+      "answer": "Oui. Vous etes proprietaire du site et de son contenu. Je peux aussi vous accompagner ensuite en maintenance si vous le souhaitez."
+    },
+    {
+      "id": 4,
+      "question": "Proposes-tu la maintenance ?",
+      "answer": "Oui, je propose un suivi après mise en ligne (mises à jour, améliorations, corrections et conseils). Ce service est payant, en général à la demande : tarif indicatif dans la section Offres, ajusté au devis selon le besoin."
+    }
+  ],
+  "maintenancePricing": {
+    "title": "Maintenance (après mise en ligne)",
+    "intro": "Optionnelle et facturée à part. Je privilégie l'intervention à la demande : vous payez uniquement quand vous avez besoin, sans engagement mensuel. Montants indicatifs, précisés au devis.",
+    "onDemand": {
+      "label": "À la demande",
+      "price": "À partir de 45 € TTC / heure",
+      "detail": "Interventions ponctuelles à l'heure, ou prix fixe par intervention selon la complexité (détaillé au devis)."
+    },
+    "reassurance": [
+      "Le périmètre exact est défini avec vous au devis : pas de mauvaise surprise.",
+      "Échange préalable sans engagement : vous validez le devis avant tout engagement."
+    ]
+  },
   "contact": {
     "title": "Prêt à concrétiser votre projet ?",
     "subtitle": "Discutons de vos objectifs et trouvons ensemble la meilleure solution pour votre business",

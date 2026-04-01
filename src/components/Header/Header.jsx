@@ -87,6 +87,14 @@ const Header = (props) => {
                 </button>
               </li>
               <li>
+                <button
+                  className="header__nav-link"
+                  onClick={() => scrollToSection('portfolio')}
+                >
+                  Projets
+                </button>
+              </li>
+              <li>
                 <button 
                   className="header__nav-link"
                   onClick={() => scrollToSection('why-choose-me')}
@@ -96,6 +104,14 @@ const Header = (props) => {
               </li>
               <li>
                 <button 
+                  className="header__nav-link"
+                  onClick={() => scrollToSection('faq')}
+                >
+                  FAQ
+                </button>
+              </li>
+              <li>
+                <button
                   className="header__nav-link"
                   onClick={() => scrollToSection('contact')}
                 >
@@ -145,11 +161,27 @@ const Header = (props) => {
               </button>
             </li>
             <li>
+              <button
+                className="header__mobile-nav-link"
+                onClick={() => scrollToSection('portfolio')}
+              >
+                Projets
+              </button>
+            </li>
+            <li>
               <button 
                 className="header__mobile-nav-link"
                 onClick={() => scrollToSection('why-choose-me')}
               >
                 Pourquoi moi
+              </button>
+            </li>
+            <li>
+              <button
+                className="header__mobile-nav-link"
+                onClick={() => scrollToSection('faq')}
+              >
+                FAQ
               </button>
             </li>
             <li>

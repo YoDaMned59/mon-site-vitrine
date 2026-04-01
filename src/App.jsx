@@ -2,9 +2,12 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Services from './components/Services/Services';
 import Offres from './components/Offres/Offres';
+import Portfolio from './components/Portfolio/Portfolio';
 import WhyChooseMe from './components/WhyChooseMe/WhyChooseMe';
 import GoogleReviews from './components/GoogleReviews/GoogleReviews';
+import FAQ from './components/FAQ/FAQ';
 import Contact from './components/Contact/Contact';
+import MobileStickyCta from './components/MobileStickyCta/MobileStickyCta';
 import Footer from './components/Footer/Footer';
 import BubblesBackground from './components/BubblesBackground/BubblesBackground';
 import MentionsLegales from './components/MentionsLegales/MentionsLegales';
@@ -59,9 +62,12 @@ function App() {
             <Hero />
             <Services />
             <Offres />
+            <Portfolio />
             <WhyChooseMe />
             <GoogleReviews />
+            <FAQ />
             <Contact />
+            <MobileStickyCta />
           </>
         )}
       </main>
