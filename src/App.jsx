@@ -3,6 +3,7 @@ import Hero from './components/Hero/Hero';
 import Services from './components/Services/Services';
 import Offres from './components/Offres/Offres';
 import WhyChooseMe from './components/WhyChooseMe/WhyChooseMe';
+import GoogleReviews from './components/GoogleReviews/GoogleReviews';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import BubblesBackground from './components/BubblesBackground/BubblesBackground';
@@ -10,7 +11,7 @@ import MentionsLegales from './components/MentionsLegales/MentionsLegales';
 import PolitiqueConfidentialite from './components/PolitiqueConfidentialite/PolitiqueConfidentialite';
 import CookieBanner from './components/CookieBanner/CookieBanner';
 import CookiePreferences from './components/CookieBanner/CookiePreferences';
-import React, { useState } from 'react';
+import React from 'react';
 import './styles/global.scss';
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
             <Services />
             <Offres />
             <WhyChooseMe />
+            <GoogleReviews />
             <Contact />
           </>
         )}
