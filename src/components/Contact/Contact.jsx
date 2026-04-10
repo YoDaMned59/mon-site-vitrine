@@ -1,22 +1,22 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 import siteData from '../../data/siteData.json';
+import contactContent from '../../data/contactContent.json';
 import './Contact.scss';
 
-const Contact = () => {
-  const ref = useRef(null);
-  const [isInView, setIsInView] = useState(false);
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1, rootMargin: '-100px' }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+const ContactInfoItem = ({ icon, title, children }) => (
+  <div className="contact__info-item hover-scale">
+    <div className="contact__info-icon">{icon}</div>
+    <div className="contact__info-content">
+      <h4>{title}</h4>
+      {children}
+    </div>
+  </div>
+);
 
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,6 +25,52 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const fields = [
+    {
+      id: 'name',
+      label: contactContent.form.nameLabel,
+      type: 'text',
+      placeholder: contactContent.form.namePlaceholder
+    },
+    {
+      id: 'email',
+      label: contactContent.form.emailLabel,
+      type: 'email',
+      placeholder: contactContent.form.emailPlaceholder
+    }
+  ];
+
+  const contactInfoItems = useMemo(
+    () => [
+      {
+        id: 'email',
+        icon: <Mail size={20} />,
+        title: 'Email',
+        content: (
+          <a href={`mailto:${siteData.contact.email}`}>
+            {siteData.contact.email}
+          </a>
+        )
+      },
+      {
+        id: 'phone',
+        icon: <Phone size={20} />,
+        title: 'Téléphone',
+        content: (
+          <a href={`tel:${siteData.contact.phone}`}>
+            {siteData.contact.phone}
+          </a>
+        )
+      },
+      {
+        id: 'location',
+        icon: <MapPin size={20} />,
+        title: 'Localisation',
+        content: <span>France ({siteData.contact.location})</span>
+      }
+    ],
+    []
+  );
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -67,72 +113,37 @@ const Contact = () => {
       }
     } catch (error) {
       console.error('Erreur lors de l\'envoi:', error);
-      setError('Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou me contacter directement par email.');
+      setError(contactContent.form.error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="contact" ref={ref}>
+    <section id="contact" className="contact">
       <div className="container">
-        <div
-          className={`contact__header fade-in${isInView ? ' visible' : ''}`}
-        >
+        <div className="contact__header fade-in visible">
           <h2 className="contact__title">{siteData.contact.title}</h2>
           <p className="contact__subtitle">{siteData.contact.subtitle}</p>
         </div>
 
-        <div
-          className={`contact__content fade-in${isInView ? ' visible' : ''}`}
-        >
+        <div className="contact__content fade-in visible">
           {/* Informations de contact */}
           <div className="contact__info fade-in">
-            <h3 className="contact__info-title">Parlons de votre projet</h3>
-            <p className="contact__info-description">
-              Je vous propose un échange gratuit de 30 minutes pour comprendre vos besoins 
-              et vous proposer la meilleure solution pour votre business.
-            </p>
+            <h3 className="contact__info-title">{contactContent.infoTitle}</h3>
+            <p className="contact__info-description">{contactContent.infoDescription}</p>
 
             <div className="contact__info-items">
-              <div className="contact__info-item hover-scale">
-                <div className="contact__info-icon">
-                  <Mail size={20} />
-                </div>
-                <div className="contact__info-content">
-                  <h4>Email</h4>
-                  <a href={`mailto:${siteData.contact.email}`}>
-                    {siteData.contact.email}
-                  </a>
-                </div>
-              </div>
-
-              <div className="contact__info-item hover-scale">
-                <div className="contact__info-icon">
-                  <Phone size={20} />
-                </div>
-                <div className="contact__info-content">
-                  <h4>Téléphone</h4>
-                  <a href={`tel:${siteData.contact.phone}`}>
-                    {siteData.contact.phone}
-                  </a>
-                </div>
-              </div>
-
-              <div className="contact__info-item hover-scale">
-                <div className="contact__info-icon">
-                  <MapPin size={20} />
-                </div>
-                <div className="contact__info-content">
-                  <h4>Localisation</h4>
-                  <span>France ({siteData.contact.location})</span>
-                </div>
-              </div>
+              {contactInfoItems.map((item) => (
+                <ContactInfoItem key={item.id} icon={item.icon} title={item.title}>
+                  {item.content}
+                </ContactInfoItem>
+              ))}
             </div>
 
             {/* Réseaux sociaux */}
             <div className="contact__social">
-              <h4>Suivez-moi</h4>
+              <h4>{contactContent.socialTitle}</h4>
               <div className="contact__social-links">
                 {Object.entries(siteData.social).map(([platform, url]) => (
                   <a
@@ -161,43 +172,32 @@ const Contact = () => {
                 )}
                 
                 <div className="contact__form-row">
-                  <div className="contact__form-group">
-                    <label htmlFor="name">Nom complet *</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Votre nom"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                  <div className="contact__form-group">
-                    <label htmlFor="email">Email *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="votre@email.com"
-                      disabled={isSubmitting}
-                    />
-                  </div>
+                  {fields.map((field) => (
+                    <div key={field.id} className="contact__form-group">
+                      <label htmlFor={field.id}>{field.label}</label>
+                      <input
+                        type={field.type}
+                        id={field.id}
+                        name={field.id}
+                        value={formData[field.id]}
+                        onChange={handleInputChange}
+                        required
+                        placeholder={field.placeholder}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+                  ))}
                 </div>
                 <div className="contact__form-row contact__form-row--fullwidth">
                   <div className="contact__form-group">
-                    <label htmlFor="message">Message *</label>
+                    <label htmlFor="message">{contactContent.form.messageLabel}</label>
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      placeholder="Décrivez votre projet ou votre besoin..."
+                      placeholder={contactContent.form.messagePlaceholder}
                       disabled={isSubmitting}
                     />
                   </div>
@@ -207,13 +207,13 @@ const Contact = () => {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Envoi en cours...' : <><Send size={16} /> Envoyer</>}
+                  {isSubmitting ? contactContent.form.submitting : <><Send size={16} /> {contactContent.form.submit}</>}
                 </button>
               </form>
             ) : (
               <div className="contact__form-success fade-in">
                 <CheckCircle size={32} />
-                <p>Merci pour votre message !<br />Je vous répondrai rapidement.</p>
+                <p>{contactContent.form.success}</p>
               </div>
             )}
           </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import siteData from '../../data/siteData.json';
+import faqContent from '../../data/faqContent.json';
 import './FAQ.scss';
 
 const FAQ = () => {
@@ -14,10 +15,8 @@ const FAQ = () => {
     <section id="faq" className="faq section">
       <div className="container">
         <div className="faq__header">
-          <h2 className="faq__title">Questions frequentes</h2>
-          <p className="faq__subtitle">
-            Les reponses rapides aux questions les plus posees avant un projet.
-          </p>
+          <h2 className="faq__title">{faqContent.title}</h2>
+          <p className="faq__subtitle">{faqContent.subtitle}</p>
         </div>
 
         <div className="faq__list">

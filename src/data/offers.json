@@ -1,0 +1,30 @@
+[
+  {
+    "id": "landing",
+    "title": "Landing Page",
+    "price": "A partir de 700 EUR",
+    "delay": "Delai moyen: 1 a 2 semaines",
+    "features": [
+      "1 page unique",
+      "Design sur-mesure",
+      "Optimisee mobile",
+      "Optimisation SEO de base",
+      "Formulaire de contact simple",
+      "Ajustements jusqu'a la mise en ligne (detaille au devis)"
+    ]
+  },
+  {
+    "id": "vitrine",
+    "title": "Site Vitrine 5 pages",
+    "price": "A partir de 1 200 EUR",
+    "delay": "Delai moyen: 2 a 4 semaines",
+    "features": [
+      "5 pages principales",
+      "Design sur-mesure",
+      "Optimisation SEO de base",
+      "Demande de rappel et devis",
+      "Formulaire de contact avance",
+      "Ajustements jusqu'a la mise en ligne (detaille au devis)"
+    ]
+  }
+]

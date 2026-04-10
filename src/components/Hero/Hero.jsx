@@ -1,41 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Globe, Zap, Users } from 'lucide-react';
 import siteData from '../../data/siteData.json';
+import heroContent from '../../data/heroContent.json';
+import { scrollToSection } from '../../utils/scrollToSection';
 import './Hero.scss';
 
 const Hero = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Animation d'apparition et flottante en CSS
-  const ref = useRef(null);
-  const [isInView, setIsInView] = useState(false);
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="hero" className="hero">
       <div className="container">
-        <div 
-          className={`hero__content${isInView ? ' visible' : ''}`}
-          ref={ref}
-        >
+        <div className="hero__content visible">
           {/* Contenu principal */}
           <div className="hero__main">
             <div className="hero__text fade-in">
               <div className="hero__badge fade-in hover-scale">
                 <Globe size={16} />
-                <span>Solutions Web sur Mesure</span>
+                <span>{heroContent.badge}</span>
               </div>
 
               <h1 className="hero__title fade-in">
@@ -54,7 +33,7 @@ const Hero = () => {
               <div className="hero__actions fade-in">
                 <button 
                   className="btn btn-primary btn-lg hero__cta hover-scale"
-                  onClick={scrollToContact}
+                  onClick={() => scrollToSection('contact')}
                 >
                   {siteData.hero.cta}
                   <ArrowRight size={20} />
@@ -62,9 +41,9 @@ const Hero = () => {
 
                 <button 
                   className="btn btn-secondary btn-lg hero__secondary hover-scale"
-                  onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => scrollToSection('services')}
                 >
-                  Découvrir mes solutions
+                  {heroContent.secondaryCta}
                 </button>
               </div>
             </div>
@@ -81,20 +60,7 @@ const Hero = () => {
                 </div>
               </div>
               <div className="hero__code-content">
-                <pre>
-                  <code>
-{`// Votre projet web
-const projet = {
-  objectif: "Développer votre business",
-  solution: "Site web sur mesure",
-  resultat: "Plus de clients",
-  accompagnement: "De A à Z"
-};
-
-// Prêt à transformer 
-// votre vision en réalité ?`}
-                  </code>
-                </pre>
+                <pre><code>{heroContent.codeSnippet}</code></pre>
               </div>
             </div>
 

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import navigationItems from '../../data/navigation.json';
+import { scrollToSection } from '../../utils/scrollToSection';
 import './Header.scss';
 
-const Header = (props) => {
+const Header = ({ onReturnToMain }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -23,23 +25,14 @@ const Header = (props) => {
     setIsMenuOpen(false);
   };
 
-  const scrollToSection = (sectionId) => {
+  const handleSectionClick = (sectionId) => {
     // Si on est sur une page légale, d'abord retourner à la page principale
-    if (props.onReturnToMain) {
-      props.onReturnToMain();
+    if (onReturnToMain) {
+      onReturnToMain();
       // Attendre un peu que la page se charge puis faire défiler
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+      setTimeout(() => scrollToSection(sectionId), 100);
     } else {
-      // Navigation normale sur la page principale
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      scrollToSection(sectionId);
     }
     closeMenu();
   };
@@ -53,8 +46,8 @@ const Header = (props) => {
           {/* Logo */}
           <div 
             className="header__logo hover-scale"
-            onClick={() => props.onReturnToMain ? props.onReturnToMain() : null}
-            style={{cursor: props.onReturnToMain ? 'pointer' : 'default'}}
+            onClick={() => (onReturnToMain ? onReturnToMain() : null)}
+            style={{cursor: onReturnToMain ? 'pointer' : 'default'}}
           >
             <span className="header__logo-text">SDuvivier<span className="header__logo-tech">Tech</span></span>
           </div>
@@ -62,62 +55,16 @@ const Header = (props) => {
           {/* Navigation Desktop */}
           <nav className="header__nav">
             <ul className="header__nav-list">
-              <li>
-                <button 
-                  className="header__nav-link"
-                  onClick={() => scrollToSection('hero')}
-                >
-                  Accueil
-                </button>
-              </li>
-              <li>
-                <button 
-                  className="header__nav-link"
-                  onClick={() => scrollToSection('services')}
-                >
-                  Services
-                </button>
-              </li>
-              <li>
-                <button 
-                  className="header__nav-link"
-                  onClick={() => scrollToSection('offres')}
-                >
-                  Offres
-                </button>
-              </li>
-              <li>
-                <button
-                  className="header__nav-link"
-                  onClick={() => scrollToSection('portfolio')}
-                >
-                  Projets
-                </button>
-              </li>
-              <li>
-                <button 
-                  className="header__nav-link"
-                  onClick={() => scrollToSection('why-choose-me')}
-                >
-                  Pourquoi moi
-                </button>
-              </li>
-              <li>
-                <button 
-                  className="header__nav-link"
-                  onClick={() => scrollToSection('faq')}
-                >
-                  FAQ
-                </button>
-              </li>
-              <li>
-                <button
-                  className="header__nav-link"
-                  onClick={() => scrollToSection('contact')}
-                >
-                  Contact
-                </button>
-              </li>
+              {navigationItems.map((item) => (
+                <li key={item.id}>
+                  <button
+                    className="header__nav-link"
+                    onClick={() => handleSectionClick(item.id)}
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -136,62 +83,16 @@ const Header = (props) => {
           className={`header__mobile-nav${isMenuOpen ? ' header__mobile-nav--open' : ''} fade-in visible`}
         >
           <ul className="header__mobile-nav-list">
-            <li>
-              <button 
-                className="header__mobile-nav-link"
-                onClick={() => scrollToSection('hero')}
-              >
-                Accueil
-              </button>
-            </li>
-            <li>
-              <button 
-                className="header__mobile-nav-link"
-                onClick={() => scrollToSection('services')}
-              >
-                Services
-              </button>
-            </li>
-            <li>
-              <button 
-                className="header__mobile-nav-link"
-                onClick={() => scrollToSection('offres')}
-              >
-                Offres
-              </button>
-            </li>
-            <li>
-              <button
-                className="header__mobile-nav-link"
-                onClick={() => scrollToSection('portfolio')}
-              >
-                Projets
-              </button>
-            </li>
-            <li>
-              <button 
-                className="header__mobile-nav-link"
-                onClick={() => scrollToSection('why-choose-me')}
-              >
-                Pourquoi moi
-              </button>
-            </li>
-            <li>
-              <button
-                className="header__mobile-nav-link"
-                onClick={() => scrollToSection('faq')}
-              >
-                FAQ
-              </button>
-            </li>
-            <li>
-              <button 
-                className="header__mobile-nav-link"
-                onClick={() => scrollToSection('contact')}
-              >
-                Contact
-              </button>
-            </li>
+            {navigationItems.map((item) => (
+              <li key={`mobile-${item.id}`}>
+                <button
+                  className="header__mobile-nav-link"
+                  onClick={() => handleSectionClick(item.id)}
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

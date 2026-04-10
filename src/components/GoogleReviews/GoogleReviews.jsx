@@ -1,51 +1,46 @@
 import { MessageSquareQuote, Star } from 'lucide-react';
+import googleReview from '../../data/googleReview.json';
 import './GoogleReviews.scss';
 
 const GoogleReviews = () => {
-  const googleSearchUrl =
-    'https://www.google.com/search?q=sduviviertech+avis';
-
   return (
     <section id="avis" className="google-reviews section">
       <div className="container">
         <div className="google-reviews__header">
-          <span className="google-reviews__badge">Avis clients</span>
-          <h2 className="google-reviews__title">Ils me font confiance</h2>
+          <span className="google-reviews__badge">{googleReview.badge}</span>
+          <h2 className="google-reviews__title">{googleReview.title}</h2>
           <p className="google-reviews__subtitle">
-            Note Google: <strong>5,0/5</strong>
+            {googleReview.subtitlePrefix} <strong>5,0/5</strong>
           </p>
         </div>
 
         <article className="review-card">
           <div className="review-card__top">
             <div className="review-card__author">
-              <h3>Mathilde Casiez</h3>
-              <p>Avis Google</p>
+              <h3>{googleReview.author}</h3>
+              <p>{googleReview.source}</p>
             </div>
-            <div className="review-card__rating" aria-label="Note 5 sur 5">
+            <div className="review-card__rating" aria-label={googleReview.ratingLabel}>
               {[...Array(5)].map((_, index) => (
                 <Star key={index} size={16} fill="currentColor" />
               ))}
-              <span>5/5</span>
+              <span>{googleReview.ratingText}</span>
             </div>
           </div>
 
           <div className="review-card__quote">
             <MessageSquareQuote size={20} />
-            <p>
-              Excellent developpeur web. Professionnel et a l&apos;ecoute de mes
-              besoins. Une collaboration tres fluide que je recommande.
-            </p>
+            <p>{googleReview.quote}</p>
           </div>
 
           <div className="review-card__actions">
             <a
-              href={googleSearchUrl}
+              href={googleReview.googleSearchUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary"
             >
-              Voir l&apos;avis sur Google
+              {googleReview.ctaLabel}
             </a>
           </div>
         </article>

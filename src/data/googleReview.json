@@ -1,0 +1,12 @@
+{
+  "badge": "Avis client",
+  "title": "Un premier retour client",
+  "subtitlePrefix": "1 avis Google public:",
+  "ratingLabel": "Note 5 sur 5",
+  "ratingText": "5/5",
+  "author": "Mathilde Casiez",
+  "source": "Avis Google - Site vitrine",
+  "quote": "Excellent developpeur web. Professionnel et a l'ecoute de mes besoins. Une collaboration tres fluide que je recommande.",
+  "ctaLabel": "Voir l'avis sur Google",
+  "googleSearchUrl": "https://www.google.com/search?q=sduviviertech+avis"
+}

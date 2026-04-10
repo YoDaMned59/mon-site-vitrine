@@ -1,10 +1,10 @@
 {
   "hero": {
-    "title": "Développeur Freelance",
+    "title": "Developpeur web freelance",
     "subtitle": "Solutions Web sur Mesure",
-    "slogan": "Transformez votre vision en succès digital",
-    "description": "Je vous accompagne de l'idée à la mise en ligne de votre projet web. Ensemble, créons une solution qui répond parfaitement à vos objectifs business et à vos utilisateurs.",
-    "cta": "Démarrer votre projet"
+    "slogan": "Un site clair, rapide et pensé pour convertir",
+    "description": "Je vous accompagne de l'idee a la mise en ligne, avec un cadre simple: objectifs definis, suivi regulier et livraison propre.",
+    "cta": "Parler de votre projet"
   },
   "services": [
     {
@@ -16,10 +16,10 @@
     },
     {
       "id": 2,
-      "title": "Applications Web",
-      "description": "Des applications web qui automatisent vos processus et améliorent votre productivité. De la gestion client à la vente en ligne.",
+      "title": "Site Vitrine Premium",
+      "description": "Un site vitrine plus complet pour presenter votre activite, rassurer vos prospects et faciliter la prise de contact.",
       "icon": "Zap",
-      "features": ["Automatisation", "Gestion simplifiée", "Sécurité renforcée", "Évolutif"]
+      "features": ["Pages supplementaires", "Parcours utilisateur clair", "Contenu structure", "Conversion optimisee"]
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
   ],
   "whyChooseMe": {
     "title": "Pourquoi me faire confiance ?",
-    "subtitle": "Votre partenaire digital de confiance",
+    "subtitle": "Un accompagnement clair, transparent et oriente resultats",
     "reasons": [
       {
         "id": 1,
@@ -42,13 +42,13 @@
       {
         "id": 2,
         "title": "Communication Transparente",
-        "description": "Suivi régulier, explications claires et respect des délais. Vous êtes informé à chaque étape de votre projet.",
+        "description": "Suivi régulier, explications claires et délai annoncé dès le départ. Vous savez où en est le projet à chaque étape.",
         "icon": "MessageCircle"
       },
       {
         "id": 3,
-        "title": "Solutions Sur Mesure",
-        "description": "Pas de solutions toutes faites. Chaque projet est unique et mérite une approche personnalisée.",
+        "title": "Approche Sur Mesure",
+        "description": "Votre site vitrine est cree pour votre activite, avec vos objectifs en tete.",
         "icon": "Settings"
       },
       {
@@ -61,14 +61,14 @@
   },
   "portfolio": {
     "title": "Réalisations",
-    "subtitle": "Quelques projets livrés. D'autres cartes s'ajouteront ici au fil des collaborations.",
+    "subtitle": "Une selection de projets livres, avec un focus sur la clarte, la performance et la prise de contact.",
     "projects": [
       {
         "id": "limagentete",
         "type": "Site vitrine",
         "title": "L'image en tête",
         "tagline": "Coaching scolaire et accompagnement dans les apprentissages",
-        "excerpt": "Site clair pour rassurer parents et élèves, navigation fluide et prise de contact. Avis Google 5/5 (Mathilde Casiez).",
+        "excerpt": "Site vitrine concu pour rassurer les visiteurs, faciliter la navigation et augmenter les prises de contact. Avis Google public: 5/5.",
         "url": "https://limagentete.fr",
         "urlLabel": "Voir le site"
       }
@@ -90,40 +90,40 @@
     {
       "id": 1,
       "question": "Combien coute un site web ?",
-      "answer": "Chaque projet est different. Je propose des offres a partir de 700 EUR, puis un devis personnalise selon vos objectifs et les fonctionnalites attendues."
+      "answer": "Le tarif depend du perimetre. Les offres demarrent a 700 EUR, puis un devis detaille est etabli selon vos objectifs, vos contenus et les fonctionnalites attendues."
     },
     {
       "id": 2,
       "question": "Quels sont les delais de realisation ?",
-      "answer": "En general, une landing page peut etre livree en 1 a 2 semaines, et un site vitrine complet en 2 a 4 semaines selon le contenu et vos retours."
+      "answer": "En moyenne: 1 a 2 semaines pour une landing page, 2 a 4 semaines pour un site vitrine. Le planning est valide avec vous au demarrage."
     },
     {
       "id": 3,
       "question": "Le site m'appartient-il apres livraison ?",
-      "answer": "Oui. Vous etes proprietaire du site et de son contenu. Je peux aussi vous accompagner ensuite en maintenance si vous le souhaitez."
+      "answer": "Oui. Vous etes proprietaire du site et de ses contenus apres livraison. Je peux ensuite vous accompagner en maintenance si vous le souhaitez."
     },
     {
       "id": 4,
       "question": "Proposes-tu la maintenance ?",
-      "answer": "Oui, je propose un suivi après mise en ligne (mises à jour, améliorations, corrections et conseils). Ce service est payant, en général à la demande : tarif indicatif dans la section Offres, ajusté au devis selon le besoin."
+      "answer": "Oui. Je propose un suivi apres mise en ligne (mises a jour, corrections, evolutions et conseils). C'est un service payant, principalement a la demande, avec tarif precise au devis."
     }
   ],
   "maintenancePricing": {
     "title": "Maintenance (après mise en ligne)",
-    "intro": "Optionnelle et facturée à part. Je privilégie l'intervention à la demande : vous payez uniquement quand vous avez besoin, sans engagement mensuel. Montants indicatifs, précisés au devis.",
+    "intro": "Optionnelle et facturee a part. Vous payez uniquement quand vous avez besoin, sans engagement mensuel. Les montants sont indicatifs et confirmes au devis.",
     "onDemand": {
       "label": "À la demande",
-      "price": "À partir de 45 € TTC / heure",
-      "detail": "Interventions ponctuelles à l'heure, ou prix fixe par intervention selon la complexité (détaillé au devis)."
+      "price": "A partir de 45 EUR TTC / heure",
+      "detail": "Interventions ponctuelles a l'heure, ou prix fixe par intervention selon la complexite (detail au devis)."
     },
     "reassurance": [
-      "Le périmètre exact est défini avec vous au devis : pas de mauvaise surprise.",
-      "Échange préalable sans engagement : vous validez le devis avant tout engagement."
+      "Le perimetre est defini avec vous avant intervention: pas de surprise.",
+      "Echange prealable sans engagement: vous validez le devis avant demarrage."
     ]
   },
   "contact": {
-    "title": "Prêt à concrétiser votre projet ?",
-    "subtitle": "Discutons de vos objectifs et trouvons ensemble la meilleure solution pour votre business",
+    "title": "Pret a concretiser votre projet ?",
+    "subtitle": "Echange de 30 minutes sans engagement pour cadrer votre besoin et la suite du projet",
     "email": "sduviviertech@outlook.fr",
     "phone": "06 46 14 72 82",
     "location": "meteren",

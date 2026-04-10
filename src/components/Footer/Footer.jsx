@@ -1,15 +1,23 @@
 import siteData from '../../data/siteData.json';
+import navigationItems from '../../data/navigation.json';
+import { scrollToSection } from '../../utils/scrollToSection';
 import './Footer.scss';
 
-const Footer = (props) => {
-  const currentYear = new Date().getFullYear();
+const legalLinkStyle = {
+  background: 'none',
+  border: 'none',
+  color: '#0056b3',
+  textDecoration: 'underline',
+  cursor: 'pointer',
+  padding: 0,
+  marginRight: '1rem'
+};
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+const Footer = ({ onShowMentions, onShowPolitique, onShowCookiePreferences }) => {
+  const currentYear = new Date().getFullYear();
+  const footerNavItems = navigationItems.filter((item) =>
+    ['hero', 'services', 'why-choose-me', 'contact'].includes(item.id)
+  );
 
   return (
     <footer className="footer">
@@ -30,26 +38,13 @@ const Footer = (props) => {
           <div className="footer__nav">
             <h4>Navigation</h4>
             <ul className="footer__nav-list">
-              <li>
-                <button onClick={() => scrollToSection('hero')}>
-                  Accueil
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('services')}>
-                  Services
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('why-choose-me')}>
-                  Pourquoi moi
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('contact')}>
-                  Contact
-                </button>
-              </li>
+              {footerNavItems.map((item) => (
+                <li key={`footer-${item.id}`}>
+                  <button onClick={() => scrollToSection(item.id)}>
+                    {item.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -95,9 +90,9 @@ const Footer = (props) => {
               © {currentYear} Tous droits réservés. Développé en France par SDuvivierTech
             </p>
             <div style={{marginTop: '0.5rem'}}>
-              <button className="footer__mentions-link" onClick={props.onShowMentions} style={{background:'none',border:'none',color:'#0056b3',textDecoration:'underline',cursor:'pointer',padding:0,marginRight:'1rem'}}>Mentions légales</button>
-              <button className="footer__politique-link" onClick={props.onShowPolitique} style={{background:'none',border:'none',color:'#0056b3',textDecoration:'underline',cursor:'pointer',padding:0,marginRight:'1rem'}}>Politique de confidentialité</button>
-              <button className="footer__cookies-link" onClick={props.onShowCookiePreferences} style={{background:'none',border:'none',color:'#0056b3',textDecoration:'underline',cursor:'pointer',padding:0}}>Gestion des cookies</button>
+              <button className="footer__mentions-link" onClick={onShowMentions} style={legalLinkStyle}>Mentions légales</button>
+              <button className="footer__politique-link" onClick={onShowPolitique} style={legalLinkStyle}>Politique de confidentialité</button>
+              <button className="footer__cookies-link" onClick={onShowCookiePreferences} style={{ ...legalLinkStyle, marginRight: 0 }}>Gestion des cookies</button>
             </div>
           </div>
 

@@ -18,41 +18,30 @@ import React from 'react';
 import './styles/global.scss';
 
 function App() {
-  const [showMentions, setShowMentions] = React.useState(false);
-  const [showPolitique, setShowPolitique] = React.useState(false);
+  const [legalView, setLegalView] = React.useState(null);
   const [showCookiePreferences, setShowCookiePreferences] = React.useState(false);
 
-  const handleShowMentions = () => {
-    setShowMentions(true);
-    setShowPolitique(false);
-    setShowCookiePreferences(false);
-  };
-  const handleShowPolitique = () => {
-    setShowPolitique(true);
-    setShowMentions(false);
-    setShowCookiePreferences(false);
-  };
+  const handleShowMentions = () => setLegalView('mentions');
+  const handleShowPolitique = () => setLegalView('politique');
   const handleShowCookiePreferences = () => {
     setShowCookiePreferences(true);
-    setShowMentions(false);
-    setShowPolitique(false);
+    setLegalView(null);
   };
   const handleHideLegal = () => {
-    setShowMentions(false);
-    setShowPolitique(false);
+    setLegalView(null);
     setShowCookiePreferences(false);
   };
 
   return (
     <div className="App">
-      <Header onReturnToMain={showMentions || showPolitique ? handleHideLegal : null} />
+      <Header onReturnToMain={legalView ? handleHideLegal : null} />
       <main>
-        {showMentions ? (
+        {legalView === 'mentions' ? (
           <>
             <button onClick={handleHideLegal} style={{marginBottom: '2rem'}}>Retour au site</button>
             <MentionsLegales />
           </>
-        ) : showPolitique ? (
+        ) : legalView === 'politique' ? (
           <>
             <button onClick={handleHideLegal} style={{marginBottom: '2rem'}}>Retour au site</button>
             <PolitiqueConfidentialite />

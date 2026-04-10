@@ -1,0 +1,17 @@
+{
+  "infoTitle": "Parlons de votre projet",
+  "infoDescription": "Je vous propose un echange de 30 minutes, sans engagement, pour cadrer votre besoin et vous recommander la solution la plus adaptee.",
+  "socialTitle": "Suivez-moi",
+  "form": {
+    "nameLabel": "Nom complet *",
+    "namePlaceholder": "Votre nom",
+    "emailLabel": "Email *",
+    "emailPlaceholder": "votre@email.com",
+    "messageLabel": "Message *",
+    "messagePlaceholder": "Decrivez votre projet ou votre besoin...",
+    "submit": "Envoyer",
+    "submitting": "Envoi en cours...",
+    "success": "Merci pour votre message ! Je vous repondrai rapidement.",
+    "error": "Une erreur est survenue lors de l'envoi. Veuillez reessayer ou me contacter directement par email."
+  }
+}
