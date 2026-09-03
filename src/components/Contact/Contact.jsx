@@ -1,10 +1,15 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
 import siteData from '../../data/siteData.json';
 import contactContent from '../../data/contactContent.json';
 import './Contact.scss';
+
+const MIN_SUBMIT_DELAY_MS = 3000;
+const MAX_NAME = 100;
+const MAX_EMAIL = 254;
+const MAX_MESSAGE = 2000;
 
 const ContactInfoItem = ({ icon, title, children }) => (
   <div className="contact__info-item hover-scale">
@@ -17,10 +22,13 @@ const ContactInfoItem = ({ icon, title, children }) => (
 );
 
 const Contact = () => {
+  const mountedAt = useRef(Date.now());
+  const lastSubmitAt = useRef(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    website: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -30,14 +38,16 @@ const Contact = () => {
       id: 'name',
       label: contactContent.form.nameLabel,
       type: 'text',
-      placeholder: contactContent.form.namePlaceholder
+      placeholder: contactContent.form.namePlaceholder,
+      maxLength: MAX_NAME,
     },
     {
       id: 'email',
       label: contactContent.form.emailLabel,
       type: 'email',
-      placeholder: contactContent.form.emailPlaceholder
-    }
+      placeholder: contactContent.form.emailPlaceholder,
+      maxLength: MAX_EMAIL,
+    },
   ];
 
   const contactInfoItems = useMemo(
@@ -50,69 +60,85 @@ const Contact = () => {
           <a href={`mailto:${siteData.contact.email}`}>
             {siteData.contact.email}
           </a>
-        )
+        ),
       },
       {
         id: 'phone',
         icon: <Phone size={20} />,
         title: 'Téléphone',
         content: (
-          <a href={`tel:${siteData.contact.phone}`}>
+          <a href={siteData.contact.phoneHref}>
             {siteData.contact.phone}
           </a>
-        )
+        ),
       },
       {
         id: 'location',
         icon: <MapPin size={20} />,
         title: 'Localisation',
-        content: <span>France ({siteData.contact.location})</span>
-      }
+        content: <span>France ({siteData.contact.location})</span>,
+      },
     ],
     []
   );
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-    // Effacer l'erreur quand l'utilisateur modifie le formulaire
     if (error) setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError('');
+
+    if (formData.website.trim()) {
+      setIsSubmitted(true);
+      return;
+    }
+
+    if (Date.now() - mountedAt.current < MIN_SUBMIT_DELAY_MS) {
+      setError(contactContent.form.error);
+      return;
+    }
+
+    if (Date.now() - lastSubmitAt.current < 30000) {
+      setError('Merci de patienter quelques secondes avant un nouvel envoi.');
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const result = await emailjs.send(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
         {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: siteData.contact.email, // Votre email de réception
+          from_name: formData.name.trim().slice(0, MAX_NAME),
+          from_email: formData.email.trim().slice(0, MAX_EMAIL),
+          message: formData.message.trim().slice(0, MAX_MESSAGE),
+          to_email: siteData.contact.email,
         },
         EMAILJS_CONFIG.PUBLIC_KEY
       );
 
       if (result.status === 200) {
+        lastSubmitAt.current = Date.now();
         setIsSubmitted(true);
         setFormData({
           name: '',
           email: '',
-          message: ''
+          message: '',
+          website: '',
         });
         setTimeout(() => {
           setIsSubmitted(false);
         }, 5000);
       }
-    } catch (error) {
-      console.error('Erreur lors de l\'envoi:', error);
+    } catch {
       setError(contactContent.form.error);
     } finally {
       setIsSubmitting(false);
@@ -128,7 +154,6 @@ const Contact = () => {
         </div>
 
         <div className="contact__content fade-in visible">
-          {/* Informations de contact */}
           <div className="contact__info fade-in">
             <h3 className="contact__info-title">{contactContent.infoTitle}</h3>
             <p className="contact__info-description">{contactContent.infoDescription}</p>
@@ -141,7 +166,6 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Réseaux sociaux */}
             <div className="contact__social">
               <h4>{contactContent.socialTitle}</h4>
               <div className="contact__social-links">
@@ -160,17 +184,29 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Formulaire de contact */}
           <div className="contact__form-container fade-in">
             {!isSubmitted ? (
-              <form className="contact__form" onSubmit={handleSubmit}>
+              <form className="contact__form" onSubmit={handleSubmit} noValidate={false}>
                 {error && (
-                  <div className="contact__form-error">
+                  <div className="contact__form-error" role="alert">
                     <AlertCircle size={16} />
                     <span>{error}</span>
                   </div>
                 )}
-                
+
+                <div className="contact__hp" aria-hidden="true">
+                  <label htmlFor="website">Site web</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleInputChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="contact__form-row">
                   {fields.map((field) => (
                     <div key={field.id} className="contact__form-group">
@@ -182,6 +218,7 @@ const Contact = () => {
                         value={formData[field.id]}
                         onChange={handleInputChange}
                         required
+                        maxLength={field.maxLength}
                         placeholder={field.placeholder}
                         disabled={isSubmitting}
                       />
@@ -197,6 +234,7 @@ const Contact = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
+                      maxLength={MAX_MESSAGE}
                       placeholder={contactContent.form.messagePlaceholder}
                       disabled={isSubmitting}
                     />
@@ -223,4 +261,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;

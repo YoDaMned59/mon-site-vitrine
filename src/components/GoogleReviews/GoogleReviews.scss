@@ -22,10 +22,7 @@
 
   &__title {
     margin-bottom: var(--spacing-sm);
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--gray-900);
   }
 
   &__subtitle {

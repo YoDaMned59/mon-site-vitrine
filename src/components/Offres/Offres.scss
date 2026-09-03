@@ -7,10 +7,7 @@
     font-size: 2.5rem;
     margin-bottom: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--primary-color, #2563eb), var(--secondary-color, #9333ea));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--gray-900, #111827);
   }
 
   &__list {
@@ -123,6 +120,7 @@
 }
 
 .offre-card {
+  position: relative;
   background: #fff;
   border-radius: 1.5rem;
   box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08);
@@ -142,18 +140,41 @@
     border-color: var(--primary-color, #2563eb);
   }
 
+  &--featured {
+    border: 2px solid var(--primary-color, #2563eb);
+    box-shadow: 0 10px 36px rgba(37, 99, 235, 0.16);
+    max-width: 380px;
+    padding-top: 2.75rem;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color, #2563eb);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
   &__title {
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: var(--primary-color, #2563eb);
+    color: var(--gray-900, #111827);
   }
 
   &__price {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: var(--secondary-color, #9333ea);
+    color: var(--primary-color, #2563eb);
   }
 
   &__meta {

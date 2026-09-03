@@ -1,74 +1,75 @@
 {
   "hero": {
-    "title": "Developpeur web freelance",
-    "subtitle": "Solutions Web sur Mesure",
-    "slogan": "Un site clair, rapide et pensé pour convertir",
-    "description": "Je vous accompagne de l'idee a la mise en ligne, avec un cadre simple: objectifs definis, suivi regulier et livraison propre.",
+    "title": "Développeur web freelance",
+    "subtitle": "Un site clair, pensé pour la prise de contact",
+    "description": "Landing page ou vitrine 5 pages, pour indépendants et petites entreprises. Cadre simple, suivi jusqu’à la mise en ligne. Les délais partent une fois vos textes et visuels reçus.",
     "cta": "Parler de votre projet"
   },
   "services": [
     {
       "id": 1,
-      "title": "Sites Web Professionnels",
-      "description": "Des sites web modernes qui convertissent vos visiteurs en clients. Design attractif, navigation intuitive et optimisé pour tous les appareils.",
+      "title": "Landing page",
+      "description": "Une page unique pour présenter votre activité et faciliter la prise de contact. Adaptée mobile, avec un formulaire simple.",
       "icon": "Globe",
-      "features": ["Design sur mesure", "Responsive mobile", "Optimisé SEO", "Interface intuitive"]
+      "features": ["Une page claire", "Adaptée mobile", "SEO de base", "Formulaire de contact"]
     },
     {
       "id": 2,
-      "title": "Site Vitrine Premium",
-      "description": "Un site vitrine plus complet pour presenter votre activite, rassurer vos prospects et faciliter la prise de contact.",
+      "title": "Site vitrine 5 pages",
+      "description": "Un site plus complet pour présenter votre activité, rassurer vos visiteurs et les orienter vers le contact.",
       "icon": "Zap",
-      "features": ["Pages supplementaires", "Parcours utilisateur clair", "Contenu structure", "Conversion optimisee"]
+      "features": ["5 pages principales", "Parcours simple", "SEO de base", "Formulaire et demande de rappel"]
     },
     {
       "id": 3,
-      "title": "Maintenance & Évolution",
-      "description": "Un accompagnement continu pour faire évoluer votre solution web selon vos besoins et les nouvelles tendances du marché.",
+      "title": "Maintenance",
+      "description": "Après la mise en ligne : corrections, petites évolutions et mises à jour, à la demande, sans engagement mensuel.",
       "icon": "Shield",
-      "features": ["Support réactif", "Mises à jour", "Optimisations", "Conseils stratégiques"]
+      "features": ["Corrections ponctuelles", "Mises à jour", "Petites évolutions", "Devis avant intervention"]
     }
   ],
   "whyChooseMe": {
-    "title": "Pourquoi me faire confiance ?",
-    "subtitle": "Un accompagnement clair, transparent et oriente resultats",
+    "title": "Pourquoi travailler avec moi ?",
+    "subtitle": "Un suivi direct, des prix lisibles, un délai annoncé une fois les contenus reçus",
     "reasons": [
       {
         "id": 1,
-        "title": "Compréhension Business",
-        "description": "Je prends le temps de comprendre vos enjeux, vos objectifs et votre marché pour proposer des solutions adaptées.",
+        "title": "Échange simple",
+        "description": "Un interlocuteur unique. On cadre le besoin ensemble, sans jargon inutile.",
         "icon": "Target"
       },
       {
         "id": 2,
-        "title": "Communication Transparente",
-        "description": "Suivi régulier, explications claires et délai annoncé dès le départ. Vous savez où en est le projet à chaque étape.",
+        "title": "Suivi régulier",
+        "description": "Vous savez où en est le projet. Le délai est annoncé au devis, à partir de la réception de vos contenus.",
         "icon": "MessageCircle"
       },
       {
         "id": 3,
-        "title": "Approche Sur Mesure",
-        "description": "Votre site vitrine est cree pour votre activite, avec vos objectifs en tete.",
+        "title": "Site à votre image",
+        "description": "Couleurs, textes et pages adaptés à votre activité, pas un thème générique laissé tel quel.",
         "icon": "Settings"
       },
       {
         "id": 4,
-        "title": "Accompagnement Long Terme",
-        "description": "Je reste disponible après la livraison pour faire évoluer votre solution selon vos besoins.",
+        "title": "Dispo après livraison",
+        "description": "Je reste joignable pour les corrections et évolutions, en maintenance à la demande.",
         "icon": "Users"
       }
     ]
   },
   "portfolio": {
     "title": "Réalisations",
-    "subtitle": "Une selection de projets livres, avec un focus sur la clarte, la performance et la prise de contact.",
+    "subtitle": "Des sites livrés, pensés pour être clairs et donner envie de vous contacter.",
     "projects": [
       {
         "id": "limagentete",
         "type": "Site vitrine",
         "title": "L'image en tête",
         "tagline": "Coaching scolaire et accompagnement dans les apprentissages",
-        "excerpt": "Site vitrine concu pour rassurer les visiteurs, faciliter la navigation et augmenter les prises de contact. Avis Google public: 5/5.",
+        "excerpt": "Site vitrine conçu pour rassurer les visiteurs, faciliter la navigation et augmenter les prises de contact. Avis Google public : 5/5.",
+        "image": "/images/realisation-limagentete.png",
+        "imageAlt": "Capture du site vitrine L'image en tête, coaching scolaire et accompagnement dans les apprentissages",
         "url": "https://limagentete.fr",
         "urlLabel": "Voir le site"
       }
@@ -77,7 +78,7 @@
       {
         "id": 1,
         "title": "Prochains créneaux",
-        "description": "Je limite le nombre de projets en parallèle pour garder un suivi de qualité."
+        "description": "Je prends peu de projets en même temps pour garder un suivi correct."
       },
       {
         "id": 2,
@@ -89,44 +90,46 @@
   "faq": [
     {
       "id": 1,
-      "question": "Combien coute un site web ?",
-      "answer": "Le tarif depend du perimetre. Les offres demarrent a 700 EUR, puis un devis detaille est etabli selon vos objectifs, vos contenus et les fonctionnalites attendues."
+      "question": "Combien coûte un site web ?",
+      "answer": "Les bases tarifaires démarrent à 700 € TTC pour une landing page et 1 200 € TTC pour un site vitrine 5 pages. TVA non applicable (article 293 B du CGI). Un devis précise le périmètre avant de commencer."
     },
     {
       "id": 2,
-      "question": "Quels sont les delais de realisation ?",
-      "answer": "En moyenne: 1 a 2 semaines pour une landing page, 2 a 4 semaines pour un site vitrine. Le planning est valide avec vous au demarrage."
+      "question": "Quels sont les délais de réalisation ?",
+      "answer": "En moyenne : 1 à 2 semaines pour une landing page, 2 à 4 semaines pour un site 5 pages, à partir de la réception de vos textes et visuels. Les allers-retours côté contenus allongent le calendrier."
     },
     {
       "id": 3,
-      "question": "Le site m'appartient-il apres livraison ?",
-      "answer": "Oui. Vous etes proprietaire du site et de ses contenus apres livraison. Je peux ensuite vous accompagner en maintenance si vous le souhaitez."
+      "question": "Le site m'appartient-il après livraison ?",
+      "answer": "Oui. Vous êtes propriétaire du site et de ses contenus après paiement intégral. Je peux ensuite intervenir en maintenance si vous le souhaitez."
     },
     {
       "id": 4,
       "question": "Proposes-tu la maintenance ?",
-      "answer": "Oui. Je propose un suivi apres mise en ligne (mises a jour, corrections, evolutions et conseils). C'est un service payant, principalement a la demande, avec tarif precise au devis."
+      "answer": "Oui, à la demande, à partir de 45 € TTC / heure, sans forfait mensuel. Le périmètre est validé au devis avant chaque intervention."
     }
   ],
   "maintenancePricing": {
     "title": "Maintenance (après mise en ligne)",
-    "intro": "Optionnelle et facturee a part. Vous payez uniquement quand vous avez besoin, sans engagement mensuel. Les montants sont indicatifs et confirmes au devis.",
+    "intro": "Optionnelle et facturée à part. Vous payez uniquement quand vous avez besoin, sans engagement mensuel. Prix TTC, TVA non applicable (article 293 B du CGI).",
     "onDemand": {
       "label": "À la demande",
-      "price": "A partir de 45 EUR TTC / heure",
-      "detail": "Interventions ponctuelles a l'heure, ou prix fixe par intervention selon la complexite (detail au devis)."
+      "price": "À partir de 45 € TTC / heure",
+      "detail": "Interventions ponctuelles à l'heure, ou prix fixe par intervention selon la complexité (détail au devis)."
     },
     "reassurance": [
-      "Le perimetre est defini avec vous avant intervention: pas de surprise.",
-      "Echange prealable sans engagement: vous validez le devis avant demarrage."
+      "Le périmètre est défini avec vous avant intervention : pas de surprise.",
+      "Échange préalable sans engagement : vous validez le devis avant démarrage."
     ]
   },
+  "offersNote": "Délais à réception des textes et visuels. Rédaction des contenus, nom de domaine et hébergement non inclus. Prix TTC, TVA non applicable (article 293 B du CGI).",
   "contact": {
-    "title": "Pret a concretiser votre projet ?",
-    "subtitle": "Echange de 30 minutes sans engagement pour cadrer votre besoin et la suite du projet",
+    "title": "On en parle ?",
+    "subtitle": "Échange de 30 minutes sans engagement pour cadrer votre besoin et le délai réaliste",
     "email": "sduviviertech@outlook.fr",
     "phone": "06 46 14 72 82",
-    "location": "meteren",
+    "phoneHref": "tel:+33646147282",
+    "location": "Meteren",
     "cta": "Discuter de mon projet"
   },
   "social": {
@@ -134,4 +137,4 @@
     "linkedin": "https://www.linkedin.com/in/duviviersebastien/",
     "calendly": "https://calendly.com/sduviviertech"
   }
-} 
+}

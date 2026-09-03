@@ -1,13 +1,16 @@
-import * as LucideIcons from 'lucide-react';
+import { Target, MessageCircle, Settings, Users, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import siteData from '../../data/siteData.json';
 import whyChooseMeContent from '../../data/whyChooseMeContent.json';
-import { scrollToSection } from '../../utils/scrollToSection';
+import { sectionPath } from '../../utils/scrollToSection';
 import './WhyChooseMe.scss';
+
+const ICONS = { Target, MessageCircle, Settings, Users, Star };
 
 const WhyChooseMe = () => {
   const getIconComponent = (iconName) => {
-    const IconComponent = LucideIcons[iconName];
-    return IconComponent ? <IconComponent size={24} /> : <LucideIcons.Star size={24} />;
+    const IconComponent = ICONS[iconName] || Star;
+    return <IconComponent size={24} />;
   };
 
   return (
@@ -35,12 +38,9 @@ const WhyChooseMe = () => {
           <div className="why-choose-me__cta-content">
             <h3>{whyChooseMeContent.ctaTitle}</h3>
             <p>{whyChooseMeContent.ctaDescription}</p>
-            <button
-              className="btn btn-primary btn-lg"
-              onClick={() => scrollToSection('contact')}
-            >
+            <Link className="btn btn-primary btn-lg" to={sectionPath('contact')}>
               {whyChooseMeContent.ctaButton}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -48,4 +48,4 @@ const WhyChooseMe = () => {
   );
 };
 
-export default WhyChooseMe; 
+export default WhyChooseMe;

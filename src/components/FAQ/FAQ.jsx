@@ -22,17 +22,30 @@ const FAQ = () => {
         <div className="faq__list">
           {siteData.faq.map((item) => {
             const isOpen = openId === item.id;
+            const questionId = `faq-question-${item.id}`;
+            const answerId = `faq-answer-${item.id}`;
             return (
               <article key={item.id} className={`faq-item${isOpen ? ' faq-item--open' : ''}`}>
                 <button
+                  type="button"
                   className="faq-item__question"
                   onClick={() => toggleItem(item.id)}
                   aria-expanded={isOpen}
+                  aria-controls={answerId}
+                  id={questionId}
                 >
                   <span>{item.question}</span>
                   <ChevronDown size={18} />
                 </button>
-                {isOpen && <p className="faq-item__answer">{item.answer}</p>}
+                <p
+                  id={answerId}
+                  role="region"
+                  aria-labelledby={questionId}
+                  hidden={!isOpen}
+                  className="faq-item__answer"
+                >
+                  {item.answer}
+                </p>
               </article>
             );
           })}

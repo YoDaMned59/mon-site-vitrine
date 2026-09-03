@@ -1,13 +1,14 @@
 import { MessageCircle } from 'lucide-react';
-import { scrollToSection } from '../../utils/scrollToSection';
+import { Link } from 'react-router-dom';
+import { sectionPath } from '../../utils/scrollToSection';
 import './MobileStickyCta.scss';
 
 const MobileStickyCta = () => {
   return (
-    <button className="mobile-sticky-cta" onClick={() => scrollToSection('contact')}>
+    <Link className="mobile-sticky-cta" to={sectionPath('contact')}>
       <MessageCircle size={18} />
       Demander un devis
-    </button>
+    </Link>
   );
 };
 

@@ -1,96 +1,106 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import navigationItems from '../../data/navigation.json';
-import { scrollToSection } from '../../utils/scrollToSection';
+import { scrollToSection, sectionPath } from '../../utils/scrollToSection';
 import './Header.scss';
 
-const Header = ({ onReturnToMain }) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const handleSectionClick = (sectionId) => {
-    // Si on est sur une page légale, d'abord retourner à la page principale
-    if (onReturnToMain) {
-      onReturnToMain();
-      // Attendre un peu que la page se charge puis faire défiler
-      setTimeout(() => scrollToSection(sectionId), 100);
-    } else {
-      scrollToSection(sectionId);
-    }
+  const handleSectionClick = (event, sectionId) => {
     closeMenu();
+    if (location.pathname === '/') {
+      event.preventDefault();
+      scrollToSection(sectionId);
+      window.history.replaceState(null, '', sectionPath(sectionId));
+    }
   };
 
   return (
-    <header 
+    <header
       className={`header${isScrolled ? ' header--scrolled' : ''} fade-in visible`}
     >
       <div className="container">
         <div className="header__content">
-          {/* Logo */}
-          <div 
+          <Link
+            to="/"
             className="header__logo hover-scale"
-            onClick={() => (onReturnToMain ? onReturnToMain() : null)}
-            style={{cursor: onReturnToMain ? 'pointer' : 'default'}}
+            aria-label="SDuvivierTech, retour à l'accueil"
+            onClick={closeMenu}
           >
-            <span className="header__logo-text">SDuvivier<span className="header__logo-tech">Tech</span></span>
-          </div>
+            <span className="header__logo-text">
+              SDuvivier<span className="header__logo-tech">Tech</span>
+            </span>
+          </Link>
 
-          {/* Navigation Desktop */}
-          <nav className="header__nav">
+          <nav className="header__nav" aria-label="Navigation principale">
             <ul className="header__nav-list">
               {navigationItems.map((item) => (
                 <li key={item.id}>
-                  <button
+                  <Link
                     className="header__nav-link"
-                    onClick={() => handleSectionClick(item.id)}
+                    to={sectionPath(item.id)}
+                    onClick={(event) => handleSectionClick(event, item.id)}
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          {/* Bouton Menu Mobile */}
-          <button 
+          <button
+            type="button"
             className="header__menu-toggle"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Menu Mobile */}
-        <nav 
+        <nav
+          id="mobile-nav"
           className={`header__mobile-nav${isMenuOpen ? ' header__mobile-nav--open' : ''} fade-in visible`}
+          aria-label="Navigation mobile"
+          hidden={!isMenuOpen}
         >
           <ul className="header__mobile-nav-list">
             {navigationItems.map((item) => (
               <li key={`mobile-${item.id}`}>
-                <button
+                <Link
                   className="header__mobile-nav-link"
-                  onClick={() => handleSectionClick(item.id)}
+                  to={sectionPath(item.id)}
+                  onClick={(event) => handleSectionClick(event, item.id)}
                 >
                   {item.label}
-                </button>
+                </Link>
               </li>
             ))}
           </ul>
@@ -100,4 +110,4 @@ const Header = ({ onReturnToMain }) => {
   );
 };
 
-export default Header; 
+export default Header;

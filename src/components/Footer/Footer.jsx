@@ -1,78 +1,64 @@
+import { Link } from 'react-router-dom';
 import siteData from '../../data/siteData.json';
-import navigationItems from '../../data/navigation.json';
-import { scrollToSection } from '../../utils/scrollToSection';
+import offers from '../../data/offers.json';
+import footerNavItems from '../../data/footerNavigation.json';
+import { sectionPath } from '../../utils/scrollToSection';
 import './Footer.scss';
 
-const legalLinkStyle = {
-  background: 'none',
-  border: 'none',
-  color: '#0056b3',
-  textDecoration: 'underline',
-  cursor: 'pointer',
-  padding: 0,
-  marginRight: '1rem'
-};
-
-const Footer = ({ onShowMentions, onShowPolitique, onShowCookiePreferences }) => {
+const Footer = ({ onShowCookiePreferences }) => {
   const currentYear = new Date().getFullYear();
-  const footerNavItems = navigationItems.filter((item) =>
-    ['hero', 'services', 'why-choose-me', 'contact'].includes(item.id)
-  );
+  const footerServices = [
+    ...offers.map((offer) => ({ id: offer.id, title: offer.title })),
+    { id: 'maintenance', title: siteData.maintenancePricing.title },
+  ];
 
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__content">
-          {/* Logo et description */}
           <div className="footer__brand">
-            <div className="footer__logo">
+            <Link to="/" className="footer__logo" aria-label="SDuvivierTech, accueil">
               <span>SD</span>
-            </div>
+            </Link>
             <p className="footer__description">
-              Développeur freelance passionné par la création d'expériences web exceptionnelles.
-              Transformons vos idées en réalité digitale.
+              Développeur indépendant à Meteren. Sites vitrines pour indépendants et petites entreprises, de l’idée à la mise en ligne.
             </p>
           </div>
 
-          {/* Navigation rapide */}
           <div className="footer__nav">
             <h4>Navigation</h4>
             <ul className="footer__nav-list">
               {footerNavItems.map((item) => (
                 <li key={`footer-${item.id}`}>
-                  <button onClick={() => scrollToSection(item.id)}>
-                    {item.label}
-                  </button>
+                  <Link to={sectionPath(item.id)}>{item.label}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
           <div className="footer__services">
-            <h4>Services</h4>
+            <h4>Offres</h4>
             <ul className="footer__services-list">
-              {siteData.services.map(service => (
+              {footerServices.map((service) => (
                 <li key={service.id}>
-                  <span>{service.title}</span>
+                  <Link to={sectionPath('offres')}>{service.title}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="footer__contact">
             <h4>Contact</h4>
             <div className="footer__contact-info">
               <p>
-                <strong>Email:</strong>
+                <strong>Email :</strong>
                 <a href={`mailto:${siteData.contact.email}`}>
                   {siteData.contact.email}
                 </a>
               </p>
               <p>
-                <strong>Téléphone:</strong>
-                <a href={`tel:${siteData.contact.phone}`}>
+                <strong>Téléphone :</strong>
+                <a href={siteData.contact.phoneHref}>
                   {siteData.contact.phone}
                 </a>
               </p>
@@ -80,19 +66,27 @@ const Footer = ({ onShowMentions, onShowPolitique, onShowCookiePreferences }) =>
           </div>
         </div>
 
-        {/* Séparateur */}
         <div className="footer__divider"></div>
 
-        {/* Bas de page */}
         <div className="footer__bottom">
           <div className="footer__copyright">
             <p>
               © {currentYear} Tous droits réservés. Développé en France par SDuvivierTech
             </p>
-            <div style={{marginTop: '0.5rem'}}>
-              <button className="footer__mentions-link" onClick={onShowMentions} style={legalLinkStyle}>Mentions légales</button>
-              <button className="footer__politique-link" onClick={onShowPolitique} style={legalLinkStyle}>Politique de confidentialité</button>
-              <button className="footer__cookies-link" onClick={onShowCookiePreferences} style={{ ...legalLinkStyle, marginRight: 0 }}>Gestion des cookies</button>
+            <div className="footer__legal">
+              <Link className="footer__legal-link" to="/mentions-legales">
+                Mentions légales
+              </Link>
+              <Link className="footer__legal-link" to="/politique-confidentialite">
+                Politique de confidentialité
+              </Link>
+              <button
+                type="button"
+                className="footer__legal-link"
+                onClick={onShowCookiePreferences}
+              >
+                Gestion des cookies
+              </button>
             </div>
           </div>
 
@@ -115,4 +109,4 @@ const Footer = ({ onShowMentions, onShowPolitique, onShowCookiePreferences }) =>
   );
 };
 
-export default Footer; 
+export default Footer;

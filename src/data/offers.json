@@ -1,30 +1,31 @@
 [
   {
-    "id": "landing",
-    "title": "Landing Page",
-    "price": "A partir de 700 EUR",
-    "delay": "Delai moyen: 1 a 2 semaines",
+    "id": "vitrine",
+    "title": "Site vitrine 5 pages",
+    "price": "À partir de 1 200 € TTC",
+    "delay": "2 à 4 semaines à réception des contenus",
+    "featured": true,
+    "badge": "Le plus demandé",
     "features": [
-      "1 page unique",
-      "Design sur-mesure",
-      "Optimisee mobile",
-      "Optimisation SEO de base",
-      "Formulaire de contact simple",
-      "Ajustements jusqu'a la mise en ligne (detaille au devis)"
+      "5 pages principales",
+      "Mise en page adaptée à votre activité",
+      "SEO de base (titres, description, sitemap)",
+      "Formulaire de contact et demande de rappel",
+      "Ajustements jusqu'à la mise en ligne (précisés au devis)"
     ]
   },
   {
-    "id": "vitrine",
-    "title": "Site Vitrine 5 pages",
-    "price": "A partir de 1 200 EUR",
-    "delay": "Delai moyen: 2 a 4 semaines",
+    "id": "landing",
+    "title": "Landing page",
+    "price": "À partir de 700 € TTC",
+    "delay": "1 à 2 semaines à réception des contenus",
     "features": [
-      "5 pages principales",
-      "Design sur-mesure",
-      "Optimisation SEO de base",
-      "Demande de rappel et devis",
-      "Formulaire de contact avance",
-      "Ajustements jusqu'a la mise en ligne (detaille au devis)"
+      "1 page unique",
+      "Mise en page adaptée à votre activité",
+      "Version mobile",
+      "SEO de base (titres, description, sitemap)",
+      "Formulaire de contact",
+      "Ajustements jusqu'à la mise en ligne (précisés au devis)"
     ]
   }
 ]

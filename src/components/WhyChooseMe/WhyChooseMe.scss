@@ -11,10 +11,7 @@
 
   &__title {
     margin-bottom: var(--spacing-md);
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--gray-900);
   }
 
   &__subtitle {
@@ -97,7 +94,7 @@
     @include flex-center;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    background: var(--primary-color);
     border-radius: var(--border-radius-lg);
     margin: 0 auto var(--spacing-lg);
     color: var(--white);

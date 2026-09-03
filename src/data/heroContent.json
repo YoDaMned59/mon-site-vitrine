@@ -1,5 +1,14 @@
 {
-  "badge": "Sites vitrines sur mesure",
-  "secondaryCta": "Decouvrir mes solutions",
-  "codeSnippet": "// Votre projet web\nconst projet = {\n  objectif: \"Developper votre business\",\n  solution: \"Site vitrine sur mesure\",\n  resultat: \"Plus de prises de contact\",\n  accompagnement: \"De A a Z\"\n};\n\n// Pret a lancer\n// votre site vitrine ?"
+  "badge": "Freelance à Meteren",
+  "secondaryCta": "Voir les offres",
+  "previewUrlLabel": "votresite.fr",
+  "previewBrand": "Votre activité",
+  "previewTitle": "Un site clair pour être trouvé et contacté",
+  "previewCta": "Me contacter",
+  "previewCaption": "Mise en page à votre image, pensée pour la prise de contact",
+  "highlights": [
+    { "id": "price", "label": "À partir de 700 € TTC" },
+    { "id": "delay", "label": "Délai à réception des contenus" },
+    { "id": "review", "label": "Avis Google 5/5" }
+  ]
 }

@@ -29,6 +29,7 @@
     border-radius: 0;
     cursor: pointer;
     padding: 0;
+    text-decoration: none;
 
     &-text {
       font-family: var(--font-family-primary);
@@ -67,6 +68,8 @@
       padding: var(--spacing-sm) var(--spacing-md);
       border-radius: var(--border-radius-md);
       transition: all var(--transition-fast);
+      text-decoration: none;
+      font-family: inherit;
 
       &:hover {
         color: var(--primary-color);
@@ -112,6 +115,10 @@
     right: 0;
     z-index: 1001;
 
+    &[hidden] {
+      display: none !important;
+    }
+
     @media (max-width: 1024px) {
       display: none;
     }
@@ -133,6 +140,8 @@
       padding: var(--spacing-md) 0;
       text-align: left;
       transition: all var(--transition-fast);
+      text-decoration: none;
+      font-family: inherit;
 
       &:hover {
         color: var(--primary-color);

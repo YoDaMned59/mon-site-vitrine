@@ -2,5 +2,7 @@
   { "id": "hero", "label": "Accueil" },
   { "id": "offres", "label": "Offres" },
   { "id": "portfolio", "label": "Projets" },
+  { "id": "why-choose-me", "label": "Pourquoi moi" },
+  { "id": "faq", "label": "FAQ" },
   { "id": "contact", "label": "Contact" }
 ]

@@ -16,19 +16,37 @@ const Portfolio = () => {
         <div className="portfolio__grid">
           {projects.map((project) => (
             <article key={project.id} className="portfolio-card portfolio-card--project">
-              <span className="portfolio-card__type">{project.type}</span>
-              <h3 className="portfolio-card__title">{project.title}</h3>
-              <p className="portfolio-card__tagline">{project.tagline}</p>
-              <p className="portfolio-card__excerpt">{project.excerpt}</p>
-              <a
-                className="btn btn-secondary portfolio-card__link"
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {project.urlLabel}
-                <ExternalLink size={16} aria-hidden />
-              </a>
+              {project.image && (
+                <a
+                  className="portfolio-card__media"
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt}
+                    width="1280"
+                    height="800"
+                    loading="lazy"
+                  />
+                </a>
+              )}
+              <div className="portfolio-card__body">
+                <span className="portfolio-card__type">{project.type}</span>
+                <h3 className="portfolio-card__title">{project.title}</h3>
+                <p className="portfolio-card__tagline">{project.tagline}</p>
+                <p className="portfolio-card__excerpt">{project.excerpt}</p>
+                <a
+                  className="btn btn-secondary portfolio-card__link"
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {project.urlLabel}
+                  <ExternalLink size={16} aria-hidden />
+                </a>
+              </div>
             </article>
           ))}
 

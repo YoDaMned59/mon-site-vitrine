@@ -3,3 +3,5 @@ export const scrollToSection = (sectionId) => {
   if (!element) return;
   element.scrollIntoView({ behavior: 'smooth' });
 };
+
+export const sectionPath = (sectionId) => `/#${sectionId}`;

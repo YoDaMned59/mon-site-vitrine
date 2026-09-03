@@ -11,10 +11,7 @@
 
   &__title {
     margin-bottom: var(--spacing-md);
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--gray-900);
   }
 
   &__subtitle {
@@ -158,6 +155,7 @@
     flex-direction: column;
     gap: 1.5rem;
     width: 100%;
+    position: relative;
 
     &-row {
       display: grid;
@@ -200,6 +198,11 @@
           outline: none;
           border-color: var(--primary-color);
           box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--primary-color);
+          outline-offset: 2px;
         }
 
         &::placeholder {
@@ -362,4 +365,13 @@
   &:hover {
     transform: scale(1.05);
   }
+}
+
+.contact__hp {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 } 
